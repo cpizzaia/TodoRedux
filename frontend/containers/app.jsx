@@ -2,14 +2,21 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actionCreators from '../actions/actionCreators'
+import TodoList from '../components/todoList.jsx'
+import CreateTodo from '../components/createTodo.jsx'
 
-export default class App extends Component {
+class App extends Component {
   componentDidMount() {
+    this.props.actions.fetchTodos()
 
   }
   render() {
+    const { todos } = this.props
     return (
-      <div> hello </div>
+      <div>
+        <CreateTodo />
+        <TodoList todos={todos}/>
+      </div>
     )
   }
 }

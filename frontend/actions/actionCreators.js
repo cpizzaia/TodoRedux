@@ -1,5 +1,5 @@
 import {
-  RECEIVE_TODO
+  RECEIVE_TODOS
 } from '../constants/actionTypes';
 
 const TODOS_URL = "api/todos";
@@ -12,7 +12,7 @@ export function fetchTodos() {
   return dispatch => {
     return $.ajax({ url: TODOS_URL })
       .then(data => {
-        dispatch(receiveTodos(data.todos));
+        dispatch(receiveTodos(data));
       });
   };
 }

@@ -4,7 +4,7 @@ import configureStore from '../store/configureStore'
 import App from './app.jsx'
 
 const store = configureStore({
-  todos: {}
+  todos: []
 })
 
 export default class Root extends Component {

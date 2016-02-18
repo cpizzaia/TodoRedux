@@ -1,1 +1,1 @@
-json.extract!(todo, :title)
+json.extract!(todo, :id, :title)

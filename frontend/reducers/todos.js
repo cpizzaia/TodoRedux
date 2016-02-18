@@ -1,10 +1,9 @@
-import { RECEIVE_TODO } from '../constants/actionTypes';
+import { RECEIVE_TODOS } from '../constants/actionTypes';
 
 export default function todos(state = {}, action) {
   switch(action.type) {
-    case RECEIVE_TODO:
-      return Object.assign({}, state, action.todo);
-
+    case RECEIVE_TODOS:
+      return [...action.todos]
     default:
       return state;
   }
