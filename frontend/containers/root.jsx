@@ -6,7 +6,7 @@ import App from './app.jsx'
 const store = configureStore({
   todos: []
 })
-
+window.store = store;
 export default class Root extends Component {
   render() {
     return (

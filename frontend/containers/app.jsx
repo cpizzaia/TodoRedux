@@ -9,12 +9,17 @@ class App extends Component {
   componentDidMount() {
     this.props.actions.fetchTodos()
 
+
   }
   render() {
-    const { todos } = this.props
+    const {
+      todos,
+      actions
+    } = this.props
+
     return (
       <div>
-        <CreateTodo />
+        <CreateTodo create={actions.createTodo}/>
         <TodoList todos={todos}/>
       </div>
     )

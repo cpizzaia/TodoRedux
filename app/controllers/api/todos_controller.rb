@@ -1,5 +1,15 @@
 class Api::TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = Todo.all.reverse
+  end
+
+  def create
+    @todo = Todo.create(todo_params)
+    render :show
+  end
+
+  private
+  def todo_params
+    params.require(:todo).permit(:title)
   end
 end
