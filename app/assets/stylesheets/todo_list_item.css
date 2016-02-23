@@ -6,6 +6,13 @@
   margin: 10px 0;
 }
 
+.todo-delete {
+  float: right;
+  line-height: 50px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
 .todo-number {
   float: left;
   line-height: 50px;

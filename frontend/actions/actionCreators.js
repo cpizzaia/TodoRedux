@@ -1,6 +1,7 @@
 import {
   RECEIVE_TODOS,
-  RECEIVE_TODO
+  RECEIVE_TODO,
+  REMOVE_TODO
 } from '../constants/actionTypes';
 
 const TODOS_URL = "api/todos";
@@ -11,6 +12,10 @@ const receiveTodos = (todos) => {
 
 const receiveTodo = (todo) => {
   return { type: RECEIVE_TODO, todo }
+}
+
+const removeTodo = (todo) => {
+  return { type: REMOVE_TODO, todo }
 }
 
 export const fetchTodos = () => {
@@ -33,5 +38,16 @@ export const createTodo = (todo) => {
       dispatch(receiveTodo(todo))
     })
   }
+}
 
+export const deleteTodo = (todo) => {
+  return dispatch => {
+    return $.ajax({
+      url: TODOS_URL + "/" + todo.id,
+      method: "DELETE"
+    })
+    .then(todo => {
+      dispatch(removeTodo(todo))
+    })
+  }
 }

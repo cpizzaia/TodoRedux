@@ -1,6 +1,7 @@
 import {
   RECEIVE_TODOS,
-  RECEIVE_TODO
+  RECEIVE_TODO,
+  REMOVE_TODO
    } from '../constants/actionTypes'
 
 export default function todos(state = {}, action) {
@@ -9,7 +10,18 @@ export default function todos(state = {}, action) {
       return [...action.todos]
     case RECEIVE_TODO:
       return [action.todo, ...state]
+    case REMOVE_TODO:
+      return removeTodo([...state], action.todo)
     default:
       return state;
   }
+}
+
+const removeTodo = (todos, todo) => {
+  todos.forEach( (todoItem, index) => {
+    if (todoItem.id === todo.id) {
+      todos.splice(index, 1)
+    }
+  })
+  return todos
 }

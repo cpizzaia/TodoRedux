@@ -8,6 +8,12 @@ class Api::TodosController < ApplicationController
     render :show
   end
 
+  def destroy
+    @todo = Todo.find(params[:id])
+    @todo.destroy
+    render :show
+  end
+
   private
   def todo_params
     params.require(:todo).permit(:title)
