@@ -1,6 +1,6 @@
 class Api::TodosController < ApplicationController
   def index
-    @todos = Todo.all.reverse
+    @todos = Todo.order('created_at DESC')
   end
 
   def create
@@ -14,8 +14,14 @@ class Api::TodosController < ApplicationController
     render :show
   end
 
+  def update
+    @todo = Todo.find(params[:id])
+    @todo.update(todo_params)
+    render :show
+  end
+
   private
   def todo_params
-    params.require(:todo).permit(:title)
+    params.require(:todo).permit(:title, :done)
   end
 end

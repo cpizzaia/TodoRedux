@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <CreateTodo create={actions.createTodo}/>
-        <TodoList todos={todos} deleteTodo={actions.deleteTodo}/>
+        <TodoList todos={todos} deleteTodo={actions.deleteTodo} updateTodo={actions.updateTodo}/>
       </div>
     )
   }

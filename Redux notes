@@ -1,0 +1,28 @@
+Redux overview and dependencies
+- actionCreators
+	* actions such as fetch or delete (ajax requests wrapped in dispatch with a .then of dispatch with the callback fed in,
+	callback is typically something like receive or removeTodo.
+	* callbacks with a return object that has a type property and data property i.e {type: RECEIVE_TODO, todo}.
+	* type constants need to be imported from the constants file.
+- components
+	* your React components that you use throughout the project.
+- contants
+	* file just exported constants i.e. export const RECEIVE_TODO = "RECEIVE_TODO".
+- containers
+	* includes your root and app.
+	* in the root component you require the provider, configure store, and app component.
+	* you create and initial store with the initial state of the properties i.e. const store = configureStore({ todos: [] }).
+	* All root does is render the provider with the store fed in as a prop and the app as a child.
+	* The app component takes in all your action creators and the components you wish to render.
+	* on mount it will fetch the data needed.
+	* it maps the state to the props so children components rerender on store change
+	* it maps the dispatch to the props so all actions get wrapped in wrapped in dispatch
+	* it connects to the store through export defail connect(mapStateToProps, mapDispatchToProps)(App)
+- reducers
+	* reducers return a new state of the object
+	* a rootReducer combines all the reducers through export default combineReducers({ todos, pomodoros })
+	* reducer has a case statement based on action types and returns the new edited property.
+- store
+	* configure store just takes in your rootReducer, intialState, and applyMiddleware(createLogger(), thunkMiddleware)
+- entry
+	* gets the entry hook for the app and renders the Root component on it

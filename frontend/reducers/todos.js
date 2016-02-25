@@ -1,7 +1,8 @@
 import {
   RECEIVE_TODOS,
   RECEIVE_TODO,
-  REMOVE_TODO
+  REMOVE_TODO,
+  UPDATE_TODO
    } from '../constants/actionTypes'
 
 export default function todos(state = {}, action) {
@@ -12,6 +13,8 @@ export default function todos(state = {}, action) {
       return [action.todo, ...state]
     case REMOVE_TODO:
       return removeTodo([...state], action.todo)
+    case UPDATE_TODO:
+      return updateTodo([...state], action.todo)
     default:
       return state;
   }
@@ -24,4 +27,10 @@ const removeTodo = (todos, todo) => {
     }
   })
   return todos
+}
+
+const updateTodo = (todos, todo) => {
+  return todos.map( (todoItem, index) => {
+    return todoItem.id === todo.id ? todo : todoItem
+  })
 }

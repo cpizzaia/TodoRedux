@@ -1,9 +1,14 @@
 .todo-list-item {
   width: 100%;
   height: 50px;
-  background: rgb(176, 176, 176);
-  border-radius: 5px;
+  background: white;
+  border-radius: 50px;
   margin: 10px 0;
+  border: 1px solid #b1b1b1;
+  box-shadow: 5px 5px 10px #6e6e6e;
+
+  animation: expand 0.5s ease-in 1;
+  overflow: hidden;
 }
 
 .todo-delete {
@@ -21,4 +26,29 @@
 
 .todo-title {
   line-height: 50px;
+}
+
+.todo-done {
+  width: 20px;
+  height: 20px;
+  background: white;
+  float: left;
+  margin: 15px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #b1b1b1;
+}
+
+
+@-webkit-keyframes expand {
+    0% {
+      opacity: 0;
+      height: 0;
+    }
+    50% {
+      opacity: 0;
+      height: 50px;
+    }
+    100% { opacity: 1; }
 }

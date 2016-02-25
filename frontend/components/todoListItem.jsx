@@ -6,13 +6,22 @@ export default class TodoListItem extends Component {
     this.props.deleteTodo(this.props.todo)
   }
 
+  done() {
+    return this.props.todo.done ? <div className="todo-done">X</div> : <div className="todo-done" onClick={this.completeTodo.bind(this)}></div>
+  }
+
+  completeTodo() {
+    const { id, title } = this.props.todo
+    this.props.updateTodo({id, title, done: true})
+  }
+
   render() {
     const { todo } = this.props
 
     return (
       <li className="todo-list-item">
         <h2 className="todo-delete" onClick={this.delete.bind(this)}>X</h2>
-        <h2 className="todo-number">{todo.id}</h2>
+        {this.done()}
         <h2 className="todo-title">{todo.title}</h2>
       </li>
     )
